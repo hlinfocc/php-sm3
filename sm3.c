@@ -498,7 +498,46 @@ PHP_FUNCTION(sm3)
 	*ptr = '\0';
     RETURN_STRINGL(result, 64);
 }
+/*
+ *
+ *sm3_hmac
+ *auther:呐喊
+ *date:2019-08-01
+ */ 
+PHP_FUNCTION(sm3_hmac)
+{
+        char *key = NULL;	
+        char *input = NULL;
+        int argc = ZEND_NUM_ARGS();
+        size_t key_len;
+        size_t input_len;
 
+        int i;
+        unsigned char output[32];
+
+        char str;
+        char *result;
+        char *ptr;
+
+        if (zend_parse_parameters(argc, "ss", &key, &key_len,&input,&input_len) == FAILURE)
+                return;	
+
+        result = (char *) emalloc(64);
+        ptr = result;
+
+
+        sm3_hmac(key,key_len,input, input_len, output);
+
+        for(i=0; i<32; i++)
+        {
+                sprintf(&str, "%02x", output[i]);
+                memcpy(ptr, &str, 2);
+                ptr += 2;
+        }
+
+        *ptr = '\0';
+    RETURN_STRINGL(result, 64);
+}
 
 PHP_MINIT_FUNCTION(sm3)
 {
@@ -562,6 +601,7 @@ PHP_MINFO_FUNCTION(sm3)
 const zend_function_entry sm3_functions[] = {
 	PHP_FE(confirm_sm3_compiled,	NULL)		/* For testing, remove later. */
 	PHP_FE(sm3,	NULL)
+	PHP_FE(sm3_hmac,	NULL)
 	PHP_FE_END	/* Must be the last line in sm3_functions[] */
 };
 /* }}} */
