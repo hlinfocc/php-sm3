@@ -5,9 +5,9 @@
 // ARG_WITH("sm3", "for sm3 support", "no");
 
 // Otherwise, use ARG_ENABLE
-// ARG_ENABLE("sm3", "enable sm3 support", "no");
+ARG_ENABLE("sm3", "enable sm3 support", "no");
 
 if (PHP_SM3 != "no") {
-	EXTENSION("sm3", "sm3.c", PHP_EXTNAME_SHARED, "/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1");
+	EXTENSION("sm3", "sm3.c", PHP_SM3_SHARED, "/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1");
 }
 
