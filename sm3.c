@@ -586,6 +586,10 @@ PHP_MINFO_FUNCTION(sm3)
 {
 	php_info_print_table_start();
 	php_info_print_table_header(2, "sm3 support", "enabled");
+	php_info_print_table_row(2, "Version",  PHP_SM3_VERSION);
+	php_info_print_table_row(2, "Released", PHP_SM3_RELEASED);
+	php_info_print_table_row(2, "Authors",  PHP_SM3_AUTHORS);
+	php_info_print_table_row(2, "Url",  PHP_SM3_URL);
 	php_info_print_table_end();
 
 	/* Remove comments if you have entries in php.ini
