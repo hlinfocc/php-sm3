@@ -24,10 +24,10 @@
 extern zend_module_entry sm3_module_entry;
 #define phpext_sm3_ptr &sm3_module_entry
 
-#define PHP_SM3_VERSION "2.2.1"
-#define PHP_SM3_RELEASED "2019-11-08"
+#define PHP_SM3_VERSION "2.2.3"
+#define PHP_SM3_RELEASED "2020-01-01"
 #define PHP_SM3_AUTHORS "luzhuqun,hlinfocc"
-#define PHP_SM3_URL "https://github.com/hlinfocc/php-sm3"
+#define PHP_SM3_URL "https://github.com/hlinfocc/php-sm3 (forked from luzhuqun/php-sm3)"
 
 #ifdef PHP_WIN32
 #	define PHP_SM3_API __declspec(dllexport)
